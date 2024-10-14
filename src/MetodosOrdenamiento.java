@@ -1,7 +1,15 @@
 public class MetodosOrdenamiento {
 
+    // Método para imprimir el arreglo
+    private void imprimirArreglo(int[] arreglo) {
+        for (int num : arreglo) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+    }
+
     // Método de ordenamiento por selección
-    public int[] sortBySeleccion(int[] arreglo, boolean ascendente) {
+    public int[] sortBySeleccion(int[] arreglo, boolean ascendente, boolean mostrarPasos) {
         int tamanio = arreglo.length;
         for (int i = 0; i < tamanio - 1; i++) {
             int indice = i;
@@ -20,12 +28,15 @@ public class MetodosOrdenamiento {
             int aux = arreglo[indice];
             arreglo[indice] = arreglo[i];
             arreglo[i] = aux;
+            if (mostrarPasos) {
+                imprimirArreglo(arreglo);
+            }
         }
         return arreglo;
     }
 
     // Método de ordenamiento por inserción
-    public int[] sortInsertion(int[] arreglo, boolean ascendente) {
+    public int[] sortInsertion(int[] arreglo, boolean ascendente, boolean mostrarPasos) {
         int n = arreglo.length;
         for (int i = 1; i < n; i++) {
             int actual = arreglo[i];
@@ -42,12 +53,15 @@ public class MetodosOrdenamiento {
                 }
             }
             arreglo[j + 1] = actual;
+            if (mostrarPasos) {
+                imprimirArreglo(arreglo);
+            }
         }
         return arreglo;
     }
 
     // Método de ordenamiento Burbuja
-    public int[] sortByBubble(int[] arreglo, boolean ascendente) {
+    public int[] sortByBubble(int[] arreglo, boolean ascendente, boolean mostrarPasos) {
         int tamanio = arreglo.length;
         for (int i = 0; i < tamanio - 1; i++) {
             for (int j = 0; j < tamanio - 1 - i; j++) {
@@ -65,12 +79,15 @@ public class MetodosOrdenamiento {
                     }
                 }
             }
+            if (mostrarPasos) {
+                imprimirArreglo(arreglo);
+            }
         }
         return arreglo;
     }
 
     // Método Burbuja mejorado
-    public int[] sortBubbleAva(int[] arreglo, boolean ascendente) {
+    public int[] sortBubbleAva(int[] arreglo, boolean ascendente, boolean mostrarPasos) {
         int n = arreglo.length;
         boolean intercambio;
         for (int i = 0; i < n; i++) {
@@ -91,6 +108,9 @@ public class MetodosOrdenamiento {
                         intercambio = true;
                     }
                 }
+            }
+            if (mostrarPasos) {
+                imprimirArreglo(arreglo);
             }
             if (!intercambio) {
                 break;
